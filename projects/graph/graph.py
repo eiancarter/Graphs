@@ -36,7 +36,7 @@ class Graph:
         beginning from starting_vertex.
         """
         q = Queue()
-        q.enqueue(starting_vertex_id)
+        q.enqueue(starting_vertex)
 
         visited = set()
 
@@ -54,14 +54,17 @@ class Graph:
         beginning from starting_vertex.
         """
         s = Stack()
-        s.push(starting_vertex_id)
+        s.push(starting_vertex)
+
+        visited = set()
 
         while s.size() > 0:
             v = s.pop()
             if v not in visited:
                 print(v)
                 visited.add(v)
-                s.push(next_vert)
+                for next_vert in self.get_neighbors(v):
+                    s.push(next_vert)
 
         visited = set()
 
