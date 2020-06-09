@@ -66,8 +66,6 @@ class Graph:
                 for next_vert in self.get_neighbors(v):
                     s.push(next_vert)
 
-        visited = set()
-
     def dft_recursive(self, starting_vertex):
         """
         Print each vertex in depth-first order
@@ -75,7 +73,14 @@ class Graph:
 
         This should be done using recursion.
         """
-        pass  # TODO
+        # s = Stack()
+        # s.push(starting_vertex)
+        # visited = set()
+
+        # while s.size() > 0:
+        #     v = s.pop()
+        #     if v not in visited:
+        #         next_vert = dft_recursive(v)
 
     def bfs(self, starting_vertex, destination_vertex):
         """
@@ -91,7 +96,20 @@ class Graph:
         starting_vertex to destination_vertex in
         depth-first order.
         """
-        pass  # TODO
+        s = Stack()
+        s.push(starting_vertex)
+        path = []
+
+        while s.size() > 0:
+            v = s.pop()
+            if v not in path:
+                print(v)
+                path.append(v)
+                for next_vert in self.get_neighbors(v):
+                    s.push(next_vert)
+                    if next_vert != destination_vertex:
+                        continue
+        return path
 
     def dfs_recursive(self, starting_vertex, destination_vertex):
         """
